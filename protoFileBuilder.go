@@ -30,6 +30,20 @@ func (p *ProtoFileBuilder) InitializationGuard(s string) {
 	}
 }
 
+func (p *ProtoFileBuilder) SetName(s string) *ProtoFileBuilder {
+	p.InitializationGuard("SetName")
+	p.Name = proto.String(s)
+	return p
+}
+
+func (p *ProtoFileBuilder) GetName() string {
+	p.InitializationGuard("GetName")
+	if p.Name == nil {
+		return ""
+	}
+	return *p.Name
+}
+
 func (p *ProtoFileBuilder) SetSyntax(s string) *ProtoFileBuilder {
 	p.InitializationGuard("SetSyntax")
 	if s != "proto2" && s != "proto3" {
@@ -48,20 +62,6 @@ func (p *ProtoFileBuilder) GetSyntax() string {
 	return *p.Syntax
 }
 
-func (p *ProtoFileBuilder) SetName(s string) *ProtoFileBuilder {
-	p.InitializationGuard("SetName")
-	p.Name = proto.String(s)
-	return p
-}
-
-func (p *ProtoFileBuilder) GetName() string {
-	p.InitializationGuard("GetName")
-	if p.Name == nil {
-		return ""
-	}
-	return *p.Name
-}
-
 func (p *ProtoFileBuilder) SetPackage(s string) *ProtoFileBuilder {
 	p.InitializationGuard("SetPackage")
 	p.Package = proto.String(s)
@@ -76,12 +76,6 @@ func (p *ProtoFileBuilder) GetPackage() string {
 	return *p.Package
 }
 
-func (p *ProtoFileBuilder) AppendMsg(msgs ...*descriptorpb.DescriptorProto) *ProtoFileBuilder {
-	p.InitializationGuard("AppendMsg")
-	p.MessageType = append(p.MessageType, msgs...)
-	return p
-}
-
 // TODO: more language package options function needs implement
 func (p *ProtoFileBuilder) SetGoPackage(pkg string) *ProtoFileBuilder {
 	p.InitializationGuard("SetGoPackage")
@@ -94,7 +88,14 @@ func (p *ProtoFileBuilder) GetGoPackage() string {
 	return p.Options.GetGoPackage()
 }
 
-func (p *ProtoFileBuilder) Set(Name, Syntax, Package, GoPackage string) *ProtoFileBuilder {
+// TODO: Msg series methods needs implement, like findby, delete or sth
+func (p *ProtoFileBuilder) AppendMsg(msgs ...*descriptorpb.DescriptorProto) *ProtoFileBuilder {
+	p.InitializationGuard("AppendMsg")
+	p.MessageType = append(p.MessageType, msgs...)
+	return p
+}
+
+func (p *ProtoFileBuilder) SetConfig(Name, Syntax, Package, GoPackage string) *ProtoFileBuilder {
 	// return p.SetName(Name).SetSyntax(Syntax).SetPackage(Package).SetGoPackage(GoPackage)
 	p.SetName(Name)
 	p.SetSyntax(Syntax)

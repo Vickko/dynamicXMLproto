@@ -35,14 +35,12 @@ func Test_Gets(t *testing.T) {
 }
 
 func Test_build(t *testing.T) {
-	f := NewFileBuilder().Set(
+	f := NewFileBuilder().SetConfig(
 		"ai.momenta/hdmap/data/mdf/test.proto",
 		"proto3",
 		"hdmap.data.mdf",
 		"ai.momenta/hdmap/data/mdf",
-	)
-
-	f.AppendMsg(
+	).AppendMsg(
 		NewMsgBuilder().Set("Man",
 			NewField("String", "firstName", 1),
 			NewField("String", "lastName", 2),
@@ -63,11 +61,11 @@ func Test_build(t *testing.T) {
 	fd, _ := protodesc.NewFile(&f.FileDescriptorProto, &protoregistry.Files{})
 	md := fd.Messages().ByName(protoreflect.Name("Man"))
 	man1 := dynamicpb.NewMessage(md)
-	fmt.Println("man1",man1)
+	fmt.Println("man1", man1)
 	man1.Set(md.Fields().ByJSONName("firstName"), protoreflect.ValueOfString("John"))
 	man1.Set(md.Fields().ByJSONName("lastName"), protoreflect.ValueOfString("Smith"))
 	man1.Set(md.Fields().ByJSONName("isAlive"), protoreflect.ValueOfBool(true))
 	man1.Set(md.Fields().ByJSONName("age"), protoreflect.ValueOfInt64(27))
-	fmt.Println("man1",man1)
+	fmt.Println("man1", man1)
 
 }
