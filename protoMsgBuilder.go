@@ -46,12 +46,12 @@ func (p *ProtoMsgBuilder) AppendField(fields ...*descriptorpb.FieldDescriptorPro
 	return p
 }
 
-func (p *ProtoMsgBuilder) ExportMsg() *descriptorpb.DescriptorProto {
-	return &p.DescriptorProto
-}
-
 func (p *ProtoMsgBuilder) Set(Name string, Fields ...*descriptorpb.FieldDescriptorProto) *ProtoMsgBuilder {
 	p.SetName(Name)
 	p.AppendField(Fields...)
 	return p
+}
+
+func (p *ProtoMsgBuilder) ExportMsg() *descriptorpb.DescriptorProto {
+	return &p.DescriptorProto
 }
