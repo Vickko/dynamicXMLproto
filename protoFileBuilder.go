@@ -7,6 +7,8 @@ package dynamicxmlproto
 import (
 	log "github.com/Vickko/dynamicXMLproto/logplus"
 	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/reflect/protodesc"
+	"google.golang.org/protobuf/reflect/protoregistry"
 	"google.golang.org/protobuf/types/descriptorpb"
 )
 
@@ -102,6 +104,33 @@ func (p *ProtoFileBuilder) SetConfig(Name, Syntax, Package, GoPackage string) *P
 	p.SetPackage(Package)
 	p.SetGoPackage(GoPackage)
 	return p
+}
+
+func (p *ProtoFileBuilder) EnoughInfo() bool {
+	p.InitializationGuard("CheckEnoughInfo")
+	return p.Name != nil && p.Syntax != nil && p.Package != nil && p.Options.GoPackage != nil && len(p.MessageType) != 0
+}
+
+func (p *ProtoFileBuilder) registerFile() *protoregistry.Files {
+	set := descriptorpb.FileDescriptorSet{}
+	set.File = append(set.File, &p.FileDescriptorProto)
+	f, err := protodesc.NewFiles(&set)
+	if err != nil {
+		log.Errorln(err)
+	}
+	return f
+}
+
+func (p *ProtoFileBuilder) Build() ProtoFile {
+	if !p.EnoughInfo() {
+		log.Errorln("Not enough Info to build a FileDescriptor")
+	}
+
+	fd, err := protodesc.NewFile(&p.FileDescriptorProto, p.registerFile())
+	if err != nil {
+		log.Errorln(err)
+	}
+	return ProtoFile{fd}
 }
 
 // TODO: maybe implement a stringer? for debug use

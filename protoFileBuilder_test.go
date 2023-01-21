@@ -57,6 +57,7 @@ func Test_build(t *testing.T) {
 			NewField("Int64", "id", 1),
 		).ExportMsg(),
 	)
+	f.Build()
 	fmt.Println(f)
 	fd, _ := protodesc.NewFile(&f.FileDescriptorProto, &protoregistry.Files{})
 	md := fd.Messages().ByName(protoreflect.Name("Man"))
