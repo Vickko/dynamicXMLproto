@@ -1,4 +1,4 @@
-package dynamicxmlproto
+package protofactory
 
 import (
 	"fmt"

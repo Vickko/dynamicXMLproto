@@ -1,4 +1,4 @@
-package dynamicxmlproto
+package protofactory
 
 import (
 	log "github.com/Vickko/dynamicXMLproto/logplus"
