@@ -121,7 +121,7 @@ func (p *ProtoFileBuilder) registerFile() *protoregistry.Files {
 	return f
 }
 
-func (p *ProtoFileBuilder) Build() ProtoFile {
+func (p *ProtoFileBuilder) Build() *ProtoFile {
 	if !p.EnoughInfo() {
 		log.Errorln("Not enough Info to build a FileDescriptor")
 	}
@@ -130,7 +130,11 @@ func (p *ProtoFileBuilder) Build() ProtoFile {
 	if err != nil {
 		log.Errorln(err)
 	}
-	return ProtoFile{fd}
+	return &ProtoFile{fd}
+}
+
+func (p *ProtoFileBuilder) MsgInstance(name string) *ProtoInstance {
+	return p.Build().GetMessage(name).NewInstance()
 }
 
 // TODO: maybe implement a stringer? for debug use

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"testing"
 
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protodesc"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/reflect/protoregistry"
@@ -68,5 +69,39 @@ func Test_build(t *testing.T) {
 	man1.Set(md.Fields().ByJSONName("isAlive"), protoreflect.ValueOfBool(true))
 	man1.Set(md.Fields().ByJSONName("age"), protoreflect.ValueOfInt64(27))
 	fmt.Println("man1", man1)
+
+	fmt.Println(md.Fields().ByJSONName("firstName").Kind())
+}
+func Test_build2(t *testing.T) {
+	f := NewFileBuilder().SetConfig(
+		"ai.momenta/hdmap/data/mdf/test.proto",
+		"proto3",
+		"hdmap.data.mdf",
+		"ai.momenta/hdmap/data/mdf",
+	).AppendMsg(
+		NewMsgBuilder().Set("Man",
+			NewField("String", "firstName", 1),
+			NewField("String", "lastName", 2),
+			NewField("Bool", "isAlive", 3),
+			NewField("Int64", "age", 4),
+		).ExportMsg(),
+		NewMsgBuilder().Set("Man2",
+			NewField("String", "firstName", 1),
+			NewField("String", "lastName", 2),
+			NewField("Bool", "isAlive", 3),
+			NewField("Int64", "age", 4),
+		).ExportMsg(),
+		NewMsgBuilder().Set("TestId",
+			NewField("Int64", "id", 1),
+		).ExportMsg(),
+	)
+	man1 := f.MsgInstance("Man")
+	man1.SetField("firstName", "John")
+	man1.SetField("lastName", "Smith")
+	man1.SetField("isAlive", true)
+	man1.SetField("age", 27)
+	fmt.Println(man1)
+	fmt.Println(proto.Marshal(man1))
+
 
 }
