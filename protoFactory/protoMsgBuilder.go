@@ -51,6 +51,13 @@ func (p *ProtoMsgBuilder) Set(Name string, Fields ...*descriptorpb.FieldDescript
 	return p
 }
 
+func (p *ProtoMsgBuilder)RegisterNestedMsgs(msgs ...*descriptorpb.DescriptorProto) *ProtoMsgBuilder {
+	p.InitializationGuard("RegisterNestedMsgs")
+	p.NestedType = append(p.NestedType, msgs...)
+	return p
+}
+
+
 func (p *ProtoMsgBuilder) ExportMsg() *descriptorpb.DescriptorProto {
 	return &p.DescriptorProto
 }

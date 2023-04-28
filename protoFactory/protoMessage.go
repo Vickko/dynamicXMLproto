@@ -18,3 +18,8 @@ func (p *ProtoMessage) NewInstance() *ProtoInstance {
 		*dynamicpb.NewMessage(p.MessageDescriptor),
 	}
 }
+
+// TODO: need a stringer to format output?
+// func (p *ProtoMessage)String() string {
+// 	return "MessageDescriptor{\n\t" + fmt.Sprint(p.FullName())
+// }
