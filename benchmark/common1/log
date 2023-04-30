@@ -1,0 +1,72 @@
+Benchmark_common1XML-8                 7         161526048 ns/op        499600342 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         160304304 ns/op        499600332 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         160111315 ns/op        499600281 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         162006804 ns/op        499600301 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         160614607 ns/op        499600413 B/op   1300001 allocs/op
+Benchmark_common1XML-8                 7         160405619 ns/op        499600292 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         160424208 ns/op        499600352 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         161248262 ns/op        499600297 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         161169262 ns/op        499600299 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         160489042 ns/op        499600635 B/op   1300001 allocs/op
+Benchmark_common1XML-8                 7         161692762 ns/op        499600322 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         162516506 ns/op        499600265 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         161774286 ns/op        499600326 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         164213226 ns/op        499600336 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         163440363 ns/op        499600322 B/op   1300000 allocs/op
+Benchmark_common1XML-8                 7         170172601 ns/op        499600317 B/op   1300000 allocs/op
+Benchmark_common1proto-8              72          14187100 ns/op         9600002 B/op     100000 allocs/op
+Benchmark_common1proto-8              80          14198568 ns/op         9600000 B/op     100000 allocs/op
+Benchmark_common1proto-8              81          14370880 ns/op         9600002 B/op     100000 allocs/op
+Benchmark_common1proto-8              80          14259103 ns/op         9600001 B/op     100000 allocs/op
+Benchmark_common1proto-8              78          14231907 ns/op         9600000 B/op     100000 allocs/op
+Benchmark_common1proto-8              81          14179385 ns/op         9600001 B/op     100000 allocs/op
+Benchmark_common1proto-8              80          14176059 ns/op         9600001 B/op     100000 allocs/op
+Benchmark_common1proto-8              79          14191146 ns/op         9600002 B/op     100000 allocs/op
+Benchmark_common1proto-8              82          14212612 ns/op         9600000 B/op     100000 allocs/op
+Benchmark_common1proto-8              81          14240973 ns/op         9600001 B/op     100000 allocs/op
+Benchmark_common1proto-8              81          14207001 ns/op         9600001 B/op     100000 allocs/op
+Benchmark_common1proto-8              80          14205657 ns/op         9600000 B/op     100000 allocs/op
+Benchmark_common1proto-8              80          14194141 ns/op         9600002 B/op     100000 allocs/op
+Benchmark_common1proto-8              80          14218235 ns/op         9600001 B/op     100000 allocs/op
+Benchmark_common1proto-8              84          14176061 ns/op         9600001 B/op     100000 allocs/op
+Benchmark_common1proto-8              81          14239837 ns/op         9600002 B/op     100000 allocs/op
+
+
+/opt/homebrew/bin/go test -benchmem -run=^$ -bench ^Benchmark_common1Dec.\* github.com/Vickko/dynamicXMLproto/benchmark -count=16                                                                                                                                                                                                         ─╯
+goos: darwin
+goarch: arm64
+pkg: github.com/Vickko/dynamicXMLproto/benchmark
+Benchmark_common1DecXML-8              2         508047646 ns/op        301600088 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         505115000 ns/op        301600080 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         507307062 ns/op        301600104 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         506199688 ns/op        301600144 B/op   7800001 allocs/op
+Benchmark_common1DecXML-8              2         506854312 ns/op        301600232 B/op   7800001 allocs/op
+Benchmark_common1DecXML-8              2         510683584 ns/op        301600104 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         507842438 ns/op        301600088 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         507892000 ns/op        301600160 B/op   7800001 allocs/op
+Benchmark_common1DecXML-8              2         506853729 ns/op        301600128 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         507576542 ns/op        301600072 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         508566750 ns/op        301600144 B/op   7800001 allocs/op
+Benchmark_common1DecXML-8              2         506040084 ns/op        301600144 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         508777792 ns/op        301600072 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         508520479 ns/op        301600120 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         507764771 ns/op        301600128 B/op   7800000 allocs/op
+Benchmark_common1DecXML-8              2         513169208 ns/op        301600104 B/op   7800000 allocs/op
+Benchmark_common1DecProto-8           50          23514677 ns/op        17600012 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23648212 ns/op        17600007 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23740212 ns/op        17600008 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23553382 ns/op        17600009 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23580953 ns/op        17600006 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23615753 ns/op        17600007 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           51          23550087 ns/op        17600005 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23626270 ns/op        17600008 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           51          23548578 ns/op        17600008 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           48          23740690 ns/op        17600011 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23692775 ns/op        17600008 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23741273 ns/op        17600010 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23634242 ns/op        17600010 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23739476 ns/op        17600010 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23607364 ns/op        17600013 B/op     600000 allocs/op
+Benchmark_common1DecProto-8           50          23761561 ns/op        17600006 B/op     600000 allocs/op
+PASS
+ok      github.com/Vickko/dynamicXMLproto/benchmark     50.470s
