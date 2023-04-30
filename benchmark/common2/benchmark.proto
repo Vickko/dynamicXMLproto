@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package dynamicXMLproto.benchmark;
+option go_package = "/benchmark";
+
+message resumeProto {
+    string Name = 1;
+    string Email = 2;
+    int64 Phone = 3;
+    address Address = 4;
+    personalInfo PersonalInfo = 5;
+    message address {
+        string Street = 1;
+        string City = 2;
+        string State = 3;
+        int32 Zip = 4;
+    }
+    message personalInfo {
+        education Education = 1;
+        experience Experience = 2;
+        message education {
+            string Degree = 1;
+            string Major = 2;
+            string School = 3;
+            date Graduate = 4;
+        }
+        message experience {
+            repeated job Job = 1;
+            message job {
+                string title = 1;
+                string company = 2;
+                date StartDate = 3;
+                date EndDate = 4;
+            }
+        }
+        message date {
+            int32 year = 1;
+            int32 month = 2;
+            int32 day = 3;
+        }
+    }
+}
