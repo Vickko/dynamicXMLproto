@@ -1,0 +1,77 @@
+go test -benchmem -run=^$ -bench ^Benchmark_common2Enc.\* github.com/Vickko/dynamicXMLproto/benchmark/common2 -count=16                                                                                     ─╯
+goos: darwin
+goarch: arm64
+pkg: github.com/Vickko/dynamicXMLproto/benchmark/common2
+Benchmark_common2EncXML-8              2         617567646 ns/op        626622988 B/op   2198281 allocs/op
+Benchmark_common2EncXML-8              2         625394834 ns/op        626622696 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         625853230 ns/op        626622712 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         624903729 ns/op        626622804 B/op   2198279 allocs/op
+Benchmark_common2EncXML-8              2         638332708 ns/op        626622756 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         623510208 ns/op        626622712 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         630052166 ns/op        626622720 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         623211458 ns/op        626622828 B/op   2198279 allocs/op
+Benchmark_common2EncXML-8              2         633359229 ns/op        626622776 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         630007334 ns/op        626622800 B/op   2198279 allocs/op
+Benchmark_common2EncXML-8              2         626227584 ns/op        626622768 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         623121146 ns/op        626622728 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         623686854 ns/op        626622728 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         619950458 ns/op        626622840 B/op   2198279 allocs/op
+Benchmark_common2EncXML-8              2         625947042 ns/op        626622728 B/op   2198278 allocs/op
+Benchmark_common2EncXML-8              2         629505146 ns/op        626622856 B/op   2198279 allocs/op
+Benchmark_common2EncProto-8           18          63653701 ns/op        21547685 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63655160 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63959817 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63645148 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63480375 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63837412 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63889086 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63835012 ns/op        21547685 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63710201 ns/op        21547685 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          64278502 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63842838 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63955870 ns/op        21547685 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          64236373 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63589282 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          63518991 ns/op        21547680 B/op     100000 allocs/op
+Benchmark_common2EncProto-8           18          64364567 ns/op        21547680 B/op     100000 allocs/op
+PASS
+ok      github.com/Vickko/dynamicXMLproto/benchmark/common2     52.594s
+
+go test -benchmem -run=^$ -bench ^Benchmark_common2Dec.\* github.com/Vickko/dynamicXMLproto/benchmark/common2 -count=16                                                                                     ─╯
+goos: darwin
+goarch: arm64
+pkg: github.com/Vickko/dynamicXMLproto/benchmark/common2
+Benchmark_common2DecXML-8              1        2910218333 ns/op        1580811720 B/op 43127757 allocs/op
+Benchmark_common2DecXML-8              1        2893852250 ns/op        1580806808 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2945077125 ns/op        1580806824 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2925940666 ns/op        1580806904 B/op 43127701 allocs/op
+Benchmark_common2DecXML-8              1        2911949583 ns/op        1580806776 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2956162625 ns/op        1580806744 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2919316542 ns/op        1580806792 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2979294625 ns/op        1580806808 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2927473041 ns/op        1580806840 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2940591875 ns/op        1580806904 B/op 43127701 allocs/op
+Benchmark_common2DecXML-8              1        2943259625 ns/op        1580806824 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2947489125 ns/op        1580806888 B/op 43127701 allocs/op
+Benchmark_common2DecXML-8              1        2958732625 ns/op        1580806856 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2987645625 ns/op        1580806808 B/op 43127700 allocs/op
+Benchmark_common2DecXML-8              1        2942257667 ns/op        1580807000 B/op 43127702 allocs/op
+Benchmark_common2DecXML-8              1        2981409792 ns/op        1580806968 B/op 43127702 allocs/op
+Benchmark_common2DecProto-8            9         145595130 ns/op        109648458 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         122950444 ns/op        109648465 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         123729824 ns/op        109648472 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         123450407 ns/op        109648467 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         152456931 ns/op        109648476 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         121686755 ns/op        109648460 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         120160227 ns/op        109648460 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         127462574 ns/op        109648469 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         138728111 ns/op        109648494 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         130964417 ns/op        109648467 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         120687125 ns/op        109648492 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         120758829 ns/op        109648464 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         118842801 ns/op        109648464 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            8         127752594 ns/op        109648494 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         126489875 ns/op        109648471 B/op   2777768 allocs/op
+Benchmark_common2DecProto-8            9         123153972 ns/op        109648458 B/op   2777768 allocs/op
+PASS
+ok      github.com/Vickko/dynamicXMLproto/benchmark/common2     84.005s
