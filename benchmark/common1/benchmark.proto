@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package dynamicXMLproto.benchmark;
+option go_package = "/benchmark";
+
+message bookProto {
+    string Title = 1;
+    author Author = 2;
+    publisher Publisher = 3;
+    message author {
+        string FirstName = 1;
+        string LastName = 2;
+    }
+    message publisher {
+        string Name = 1;
+        int32 Year = 2;
+    }
+}
