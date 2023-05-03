@@ -72,6 +72,43 @@ func (p *ProtoInstance) SetField(name string, value any) *ProtoInstance {
 	return p
 }
 
+// func AssertTypeFromStrValue(str string) (res string) {
+// 	if n1, err := strconv.ParseInt(str, 10, 64); err == nil {
+// 		if n1 < math.MaxInt32 {
+// 			res = "int"
+// 		} else {
+// 			res = "int64"
+// 		}
+// 	} else if _, err := strconv.ParseFloat(str, 64); err == nil {
+// 		res = "float"
+// 	} else if _, err := strconv.ParseBool(str); err == nil {
+// 		res = "bool"
+// 	}
+// 	res = "string"
+
+// 	return res
+// }
+
+func JudgeValueType(str string) string {
+	n, err := strconv.ParseInt(str, 10, 64)
+	if err == nil {
+		if n < math.MaxInt32 {
+			return "Int32"
+		} else {
+			return "Int64"
+		}
+	}
+	_, err = strconv.ParseFloat(str, 64)
+	if err == nil {
+		return "Double"
+	}
+	_, err = strconv.ParseBool(str)
+	if err == nil {
+		return "Bool"
+	}
+	return "String"
+}
+
 func (p *ProtoInstance) SetFieldByType(name string, str string) *ProtoInstance {
 	var value any
 
@@ -113,14 +150,14 @@ func (p *ProtoInstance) SelectChildMsg(name string) *ProtoInstance {
 // if you select child list for set propose, mutable is required
 func (p *ProtoInstance) SelectChildListMutable(name string) ProtoListField {
 	return ProtoListField{
-		p.ProtoReflect().Mutable(p.Descriptor().Fields().ByJSONName(name)).List(), 
+		p.ProtoReflect().Mutable(p.Descriptor().Fields().ByJSONName(name)).List(),
 		p.Descriptor().Fields().ByJSONName(name).Kind(),
 	}
 }
 
 func (p *ProtoInstance) SelectChildList(name string) ProtoListField {
 	return ProtoListField{
-		p.ProtoReflect().Get(p.Descriptor().Fields().ByJSONName(name)).List(), 
+		p.ProtoReflect().Get(p.Descriptor().Fields().ByJSONName(name)).List(),
 		p.Descriptor().Fields().ByJSONName(name).Kind(),
 	}
 }

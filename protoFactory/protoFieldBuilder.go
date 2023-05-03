@@ -88,6 +88,28 @@ func ParseType(s string) *descriptorpb.FieldDescriptorProto_Type {
 	return descriptorpb.FieldDescriptorProto_Type(k).Enum()
 }
 
+// TODO: refactor these two Parse func into two maps
+// TODO: The variety is not complete
+func ParseTypeString(k *descriptorpb.FieldDescriptorProto_Type) string {
+	switch *k {
+	case *descriptorpb.FieldDescriptorProto_Type(protoreflect.BoolKind).Enum():
+		return "Bool"
+	case *descriptorpb.FieldDescriptorProto_Type(protoreflect.Int32Kind).Enum():
+		return "Int32"
+	case *descriptorpb.FieldDescriptorProto_Type(protoreflect.Int64Kind).Enum():
+		return "Int64"
+	case *descriptorpb.FieldDescriptorProto_Type(protoreflect.FloatKind).Enum():
+		return "Float"
+	case *descriptorpb.FieldDescriptorProto_Type(protoreflect.DoubleKind).Enum():
+		return "Double"
+	case *descriptorpb.FieldDescriptorProto_Type(protoreflect.StringKind).Enum():
+		return "String"
+	case *descriptorpb.FieldDescriptorProto_Type(protoreflect.MessageKind).Enum():
+		return "Message"
+	}
+	return "Message"
+}
+
 func ParseLabel(label string) *descriptorpb.FieldDescriptorProto_Label {
 	var res *descriptorpb.FieldDescriptorProto_Label
 	switch label {
