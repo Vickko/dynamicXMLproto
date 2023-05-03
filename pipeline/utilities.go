@@ -11,7 +11,7 @@ import (
 
 func NodeIsDuplicated(nlist []*simplexmlwrapper.Element, n *simplexmlwrapper.Element) bool {
 	for _, e := range nlist {
-		if e.Element == n.Element {
+		if e.FullName() == n.FullName() {
 			return true
 		}
 	}
