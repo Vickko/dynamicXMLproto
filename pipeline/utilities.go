@@ -1,6 +1,8 @@
 package pipeline
 
 import (
+	"sort"
+
 	"github.com/Vickko/dynamicXMLproto/logplus"
 	"github.com/Vickko/dynamicXMLproto/protofactory"
 	"github.com/Vickko/dynamicXMLproto/simplexmlwrapper"
@@ -85,7 +87,7 @@ func BuildMsgProtoDescFromNode(p *simplexmlwrapper.Element) *descriptorpb.Descri
 	return protofactory.NewMsgBuilder().Set(p.FullName(), fields...).ExportMsg()
 }
 
-// TODO: add sort for fields, now just following random sequnce from map iteration
+// TODO: now sort fields by dict order, need a more realistic sorting scheme
 // TODO: add a map to mark only message in the whole tree
 func MergeMsgFromRelatives(d *simplexmlwrapper.DomTree, p *simplexmlwrapper.Element) *descriptorpb.DescriptorProto {
 	relatives, exist := d.NodesIndex[p.FullName()]
@@ -103,7 +105,18 @@ func MergeMsgFromRelatives(d *simplexmlwrapper.DomTree, p *simplexmlwrapper.Elem
 	// TODO: add type Consistency check
 	res := protofactory.NewMsgBuilder().Set(p.FullName())
 	index := 0
-	for fieldName, fieldList := range fieldsMap {
+
+	fieldNameList := make([]string, 0, len(fieldsMap))
+	for k := range fieldsMap {
+		fieldNameList = append(fieldNameList, k)
+	}
+	sort.Strings(fieldNameList)
+	fieldListList := make([][]*descriptorpb.FieldDescriptorProto, 0, len(fieldsMap))
+	for _, k := range fieldNameList {
+		fieldListList = append(fieldListList, fieldsMap[k])
+	}
+
+	for _, fieldList := range fieldListList {
 		index++
 		label := ""
 		typeName := ""
@@ -118,7 +131,7 @@ func MergeMsgFromRelatives(d *simplexmlwrapper.DomTree, p *simplexmlwrapper.Elem
 			typeName = protofactory.ParseTypeString(fieldInstance.Type)
 		}
 		// fmt.Println("l: ", label)
-		currentField := protofactory.NewField(label, typeName, fieldName, int32(index))
+		currentField := protofactory.NewField(label, typeName, *fieldList[0].JsonName, int32(index))
 
 		// if label == "repeated" {
 		// 	fmt.Println("cf: ", currentField)
