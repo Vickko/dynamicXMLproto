@@ -146,8 +146,10 @@ func NewField(label, typeName, name string, num int32) *descriptorpb.FieldDescri
 	if *t == descriptorpb.FieldDescriptorProto_TYPE_MESSAGE {
 		res.Name = proto.String(name)
 		res.Number = proto.Int32(num)
+		res.Label = ParseLabel(label)
 		res.Type = t
 		res.TypeName = proto.String(string(unicode.ToUpper(rune(name[0]))) + name[1:]) // Titled
+		res.JsonName = proto.String(name)
 	} else {
 		res.Name = proto.String(name)
 		res.Number = proto.Int32(num)
