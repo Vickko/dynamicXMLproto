@@ -31,7 +31,8 @@ func GetMinParentMsgNodes(ps []*simplexmlwrapper.Element) []*simplexmlwrapper.El
 	for _, p := range ps {
 		pr := p.Parent()
 		// fmt.Println(&pr)
-		if pr.IsMinimumMsg() && !NodeIsDuplicated(res, pr) {
+		//if pr.IsMinimumMsg() && !NodeIsDuplicated(res, pr) {
+		if !NodeIsDuplicated(res, pr) {
 			res = append(res, pr)
 		}
 	}
@@ -90,14 +91,25 @@ func BuildMsgProtoDescFromNode(p *simplexmlwrapper.Element) *descriptorpb.Descri
 // TODO: now sort fields by dict order, need a more realistic sorting scheme
 // TODO: add a map to mark only message in the whole tree
 func MergeMsgFromRelatives(d *simplexmlwrapper.DomTree, p *simplexmlwrapper.Element) *descriptorpb.DescriptorProto {
+
+	// Get all relatives from NodesIndex, which records all relatives for every node by name.
 	relatives, exist := d.NodesIndex[p.FullName()]
 	if !exist {
 		// TODO: Error handling logic
 		logplus.Errorln("BuildMsgProtoDescFromNode, ", p.FullName(), " not found")
 	}
+	// first convert every node into msg, then record each of their fields into a map,
+	// in order to deduplicate and merge scattered fields
 	fieldsMap := make(map[string][]*descriptorpb.FieldDescriptorProto)
 	for _, relative := range relatives {
+		// // fmt.Println(BuildMsgProtoDescFromNode(relative))
+		// if relative.FullName() == "experience" {
+		// 	fmt.Println(12312312)
+		// }
 		for _, field := range BuildMsgProtoDescFromNode(relative).Field {
+			// if relative.FullName() == "experience" {
+			// 	fmt.Println("f,", field)
+			// }
 			fieldsMap[field.GetJsonName()] = append(fieldsMap[field.GetJsonName()], field)
 		}
 	}
@@ -106,6 +118,8 @@ func MergeMsgFromRelatives(d *simplexmlwrapper.DomTree, p *simplexmlwrapper.Elem
 	res := protofactory.NewMsgBuilder().Set(p.FullName())
 	index := 0
 
+	// convert content in fieldsMap into a fieldsNameList,
+	// in order to sort these names (currently in dict order)
 	fieldNameList := make([]string, 0, len(fieldsMap))
 	for k := range fieldsMap {
 		fieldNameList = append(fieldNameList, k)
@@ -116,13 +130,14 @@ func MergeMsgFromRelatives(d *simplexmlwrapper.DomTree, p *simplexmlwrapper.Elem
 		fieldListList = append(fieldListList, fieldsMap[k])
 	}
 
+	// truely build each field, and append them in Msg desc
 	for _, fieldList := range fieldListList {
 		index++
 		label := ""
 		typeName := ""
 		_ = typeName
 		for _, fieldInstance := range fieldList {
-			if *fieldInstance.Label == *descriptorpb.FieldDescriptorProto_LABEL_REPEATED.Enum() {
+			if fieldInstance.Label != nil && *fieldInstance.Label == *descriptorpb.FieldDescriptorProto_LABEL_REPEATED.Enum() {
 				label = "repeated"
 			}
 			// if fieldInstance.GetTypeName()
@@ -131,7 +146,8 @@ func MergeMsgFromRelatives(d *simplexmlwrapper.DomTree, p *simplexmlwrapper.Elem
 			typeName = protofactory.ParseTypeString(fieldInstance.Type)
 		}
 		// fmt.Println("l: ", label)
-		currentField := protofactory.NewField(label, typeName, *fieldList[0].JsonName, int32(index))
+		// TIP: if appears nil pointer panic, consider change Name with JsonName
+		currentField := protofactory.NewField(label, typeName, *fieldList[0].Name, int32(index))
 
 		// if label == "repeated" {
 		// 	fmt.Println("cf: ", currentField)
