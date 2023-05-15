@@ -1,0 +1,116 @@
+go test -benchmem -run=^$ -bench ^Benchmark_tinyEnc.\* github.com/Vickko/dynamicXMLproto/benchmark/tiny -count=16                                                                                           ─╯
+goos: darwin
+goarch: arm64
+pkg: github.com/Vickko/dynamicXMLproto/benchmark/tiny
+Benchmark_tinyEncXML-8                12          89996576 ns/op        459200554 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          89785070 ns/op        459200572 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          90003396 ns/op        459200661 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          91740802 ns/op        459200620 B/op   1100002 allocs/op
+Benchmark_tinyEncXML-8                12          91980208 ns/op        459200592 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          89638312 ns/op        459200556 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          89836983 ns/op        459200513 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                13          92670295 ns/op        459200566 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          89398878 ns/op        459200500 B/op   1100000 allocs/op
+Benchmark_tinyEncXML-8                12          89990361 ns/op        459200552 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          90369108 ns/op        459200581 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          91621632 ns/op        459200564 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          90778976 ns/op        459200540 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          90082448 ns/op        459200521 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          90438274 ns/op        459200545 B/op   1100001 allocs/op
+Benchmark_tinyEncXML-8                12          89909872 ns/op        459200541 B/op   1100001 allocs/op
+Benchmark_tinyEncProto-8             214           5547263 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             216           5544392 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             213           5555238 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             217           5523635 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             214           5530536 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             217           5538341 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             216           5528977 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             216           5548292 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             216           5542738 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             214           5570661 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             216           5557956 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             213           5567853 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             213           5573999 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             216           5598425 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             214           5572502 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             214           5560558 ns/op         1600000 B/op     100000 allocs/op
+PASS
+ok      github.com/Vickko/dynamicXMLproto/benchmark/tiny        48.650s
+╭─    ~/Documents/Code/dynamicXMLproto/benchmark/tiny    dev !3 ?6 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── ✔  49s  ─╮
+╰─ go test -benchmem -run=^$ -bench ^Benchmark_tinyEnc.\* github.com/Vickko/dynamicXMLproto/benchmark/tiny -count=16                                                                                           ─╯
+goos: darwin
+goarch: arm64
+pkg: github.com/Vickko/dynamicXMLproto/benchmark/tiny
+Benchmark_tinyEncXML-8                12          92287580 ns/op        459200793 B/op   1100003 allocs/op
+Benchmark_tinyEncXML-8                13          90642587 ns/op        459200804 B/op   1100004 allocs/op
+Benchmark_tinyEncXML-8                12          92020618 ns/op        459200886 B/op   1100004 allocs/op
+Benchmark_tinyEncXML-8                12          90551111 ns/op        459200910 B/op   1100005 allocs/op
+Benchmark_tinyEncXML-8                12          91101882 ns/op        459200836 B/op   1100004 allocs/op
+Benchmark_tinyEncXML-8                12          94167486 ns/op        459200794 B/op   1100003 allocs/op
+Benchmark_tinyEncXML-8                12          91361486 ns/op        459200955 B/op   1100005 allocs/op
+Benchmark_tinyEncXML-8                12          94390628 ns/op        459200781 B/op   1100003 allocs/op
+Benchmark_tinyEncXML-8                12          93195604 ns/op        459200954 B/op   1100005 allocs/op
+Benchmark_tinyEncXML-8                12          91342653 ns/op        459200833 B/op   1100004 allocs/op
+Benchmark_tinyEncXML-8                12          93108788 ns/op        459200762 B/op   1100003 allocs/op
+Benchmark_tinyEncXML-8                12          92262889 ns/op        459200793 B/op   1100004 allocs/op
+Benchmark_tinyEncXML-8                12          92378181 ns/op        459200746 B/op   1100003 allocs/op
+Benchmark_tinyEncXML-8                12          92013646 ns/op        459200768 B/op   1100003 allocs/op
+Benchmark_tinyEncXML-8                12          91825861 ns/op        459200856 B/op   1100004 allocs/op
+Benchmark_tinyEncXML-8                12          93526243 ns/op        459200966 B/op   1100004 allocs/op
+Benchmark_tinyEncProto-8             208           5692274 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             208           5712635 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             210           5721339 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             208           5723804 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             208           5761747 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             208           5720197 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             208           5734806 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             208           5735924 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             206           5727992 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             210           5794651 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             207           5721832 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             208           5733964 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             207           5724310 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             207           5720835 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             207           5728998 ns/op         1600000 B/op     100000 allocs/op
+Benchmark_tinyEncProto-8             208           5770127 ns/op         1600000 B/op     100000 allocs/op
+PASS
+ok      github.com/Vickko/dynamicXMLproto/benchmark/tiny        49.806s
+
+go test -benchmem -run=^$ -bench ^Benchmark_tinyDec.\* github.com/Vickko/dynamicXMLproto/benchmark/tiny -count=16                                                                                           ─╯
+goos: darwin
+goarch: arm64
+pkg: github.com/Vickko/dynamicXMLproto/benchmark/tiny
+Benchmark_tinyDecXML-8                 6         177290764 ns/op        146400108 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         176612299 ns/op        146400080 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         174022014 ns/op        146400068 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         174072118 ns/op        146400080 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         173946611 ns/op        146400101 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         173295424 ns/op        146400090 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         173375979 ns/op        146400088 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         173225285 ns/op        146400109 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         173311250 ns/op        146400088 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         173595660 ns/op        146400125 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         173348806 ns/op        146400114 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         174997806 ns/op        146400090 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         177212007 ns/op        146400114 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         178794986 ns/op        146400093 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         175478396 ns/op        146400130 B/op   3300000 allocs/op
+Benchmark_tinyDecXML-8                 6         174020618 ns/op        146400074 B/op   3300000 allocs/op
+Benchmark_tinyDecProto-8             187           6390976 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6383033 ns/op          400001 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             186           6385556 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6375469 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             188           6372383 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6382277 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6369836 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6379386 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6373174 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6387786 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6384279 ns/op          400001 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6387658 ns/op          400001 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             184           6405694 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6394163 ns/op          400000 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             186           6395703 ns/op          400001 B/op     100000 allocs/op
+Benchmark_tinyDecProto-8             187           6432732 ns/op          400001 B/op     100000 allocs/op
+PASS
+ok      github.com/Vickko/dynamicXMLproto/benchmark/tiny        52.763s

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package dynamicXMLproto.benchmark;
+option go_package = "/benchmark";
+
+message studentProto {
+    string name = 1;
+    int32 id = 2;
+}
